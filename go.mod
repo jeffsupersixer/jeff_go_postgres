@@ -1,4 +1,4 @@
-module github.com/techschool/simplebank
+module smallcoding.localhost/docker_go_postgres
 
 go 1.13
 

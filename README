@@ -50,3 +50,8 @@ so need to do:
 brew services stop postgresql
 
 
+
+
+-----------
+go module
+go mod init smallcoding.localhost/docker_go_postgres
