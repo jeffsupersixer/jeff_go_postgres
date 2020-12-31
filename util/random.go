@@ -1,7 +1,6 @@
 package util
 
 import (
-	"fmt"
 	"math/rand"
 	"strings"
 	"time"
@@ -29,7 +28,6 @@ func RandomString(n int) string {
 }
 
 func RandomOwner() string {
-	fmt.Println("calling random owner...")
 	return RandomString(6)
 }
 
