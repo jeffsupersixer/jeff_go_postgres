@@ -54,7 +54,10 @@ brew services stop postgresql
 
 -----------
 go module
-go mod init smallcoding.localhost/docker_go_postgres
+go mod init github.com/jeffsupersixer/jeff_go_postgres
+go mod tidy
+go mod why -m github.com/mattn/go-isatty
+go mod vendor
 
 
 ------------

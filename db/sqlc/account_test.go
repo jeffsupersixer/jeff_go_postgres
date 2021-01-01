@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"smallcoding.localhost/docker_go_postgres/util"
+	"github.com/jeffsupersixer/jeff_go_postgres/util"
 )
 
 func createRandomAccount(t *testing.T) Account {
