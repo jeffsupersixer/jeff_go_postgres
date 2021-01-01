@@ -55,3 +55,32 @@ brew services stop postgresql
 -----------
 go module
 go mod init smallcoding.localhost/docker_go_postgres
+
+
+------------
+
+postgres trx isolation:
+(1) check isolation level
+show transaction isolation level;
+(2) in postgres, we ca only change isolation level in transaction and it is taking effect only during that transaction
+so :
+bigin;
+set transaction isolation level read uncommitted;
+...
+commit;
+
+(3) read uncommitted is working just like read committed in postgres, so in postgres, there is only 3 isolation level actually, it is diffenrent
+    from mysql
+(4) in read committed isolation level, phantom read and unrepeatable read will happen in transaction, just like mysql
+(5) in repeatable read isolation level, phantom read and unrepeatable read will not happen in transaction!
+    if you want to do update for the same row which has been updated and committed by other transaction, then this transaction will fail;
+    if you want to do update for the same row which has been updated and not committed by other transaction yet, then this transaction would be
+    queued for lock, after the other transaction commit, this transaction will fail also.
+    if you want to do update for the same row which has been updated and not committed by other transaction yet, then this transaction would be
+    queued for lock, ad if now the other transaction rollback, this transaction will successfully update this row.
+    if 2 transactions are updating 2 different rows, then it has no problem.
+
+(6) in serializable read isolation level, it is the highest level, and insert operation would be fail when commit if another transaction has already insert
+    in the same table and commit it already
+    however in mysql, if in serializable read isolation level, the limit is much stricter, since mysql using lock ,and even 2 concurrnt select operation
+    for the same table is not allowed. postgres not use lock, instread using dependency detection, so it is better
