@@ -3,6 +3,7 @@ docker
 tableplus
 golang migrate library
 sqlc for postgres golang lib
+golang viper for config load : https://github.com/spf13/viper
 
 
 (3)
