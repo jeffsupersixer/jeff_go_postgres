@@ -31,7 +31,8 @@ dropdb xxx
 exit
 
 
-migrate create -ext sql -dir db/migration -seq init_schema : create migrate sql (up ad down)
+migrate create -ext sql -dir db/migration -seq init_schema : create migrate sql (up and down)
+migrate create -ext sql -dir db/migration -seq add_users
 migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 ---------
